@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+  #p{ 
+    font-size: 1.4em;
+    line-height: 1.7;
+    box-shadow: inset 0 1px 1px rgb(204 52 103 / 8%), 0 0 8px rgb(28 109 169 / 60%);
+    padding: 10px;
+  }
+
+  #about{ 
+    font-weight: 500;
+    line-height: 1.2;
+    text-align:center;
+    margin:auto; display:table; 
+    border-bottom: 3px solid #71a4c9;
+    margin-bottom: 15px;
+
+
+  }
+
+</style>
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+<br/><br/>
+<h1>Welcome to Medcare </h1>
+<br/><br/><br/><br/>
+
+<p  id="p"> 
+  <span id="about" align="center">About us</span> 
+<span>
+    this project was to examine and test the performance of Machine Learning techniques and Convolutional Neural Network (CNN) </span>
+    <br/>for the classification of Pneumonia, which is based on CT images to achieve high accuracy. Another aim is to provide radiologists<br/>
+     and medical experts with a tool that is a lower cost. This tool could help them read the CT images and to create a basis for<br/>
+      a model to analyze more complex data.
+    </p>
+
+
+
+<br/><br/>
+{% endblock %}
+
+

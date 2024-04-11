@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<title>Python Flask Multiple Files Upload Example</title>
+<h2>Select scan image to upload</h2>
+
+<form method="post" action="/scan" enctype="multipart/form-data">
+
+		
+		<br/>
+    <dl>
+		<p>
+            <input type="file" name="file" aria-label="Search"> 		<input type="submit" value="Submit">
+			<span>
+				{% with messages = get_flashed_messages() %}
+				  {% if messages %}
+					<span class=flashes>
+					{% for message in messages %}
+					  <span>{{ message }}</span>
+					{% endfor %}
+					</span>
+				  {% endif %}
+				{% endwith %}
+				</span>
+		</p>
+    </dl>
+   
+	
+</br>
+
+<div class="container"  style="    box-shadow: inset 0 1px 1px rgb(204 52 103 / 8%), 0 0 8px rgb(28 109 169 / 60%);padding:10px;">
+ <!-- Or container-fluid, depending on your needs -->   
+    <div class="row align-items-center" id="features">
+		{% if t %}
+         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+             <div class="panel odd">
+				<img src="{{url_for('static', filename=im)}}" class="img-fluid" alt="Responsive image">
+
+              
+             </div>
+         </div> <!--panel-->
+         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+             <div class="panel odd">
+				<h1> Your Prediction   : <i> {{p}} </i></h1>
+             </div>
+         </div> <!--panel-->
+		 {% endif %}
+    </div><!--row-->
+</div>
+
+
+
+
+	
+</form>
+{% endblock %}

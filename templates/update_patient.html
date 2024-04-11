@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+
+{% if name %}
+    <h1>update patient</h1>
+	<br/><br/>
+
+{% else %}
+	<h1>update patient</h1>
+	<br/>
+    	
+    <div class="shadow p-3 mb-5 bg-body rounded">
+    <form action="/update_patient/{{ patient_update.idPatient }}" method="POST">
+		{{ form.hidden_tag() }}
+
+		{{ form.Full_name.label(class="form-label") }}
+
+		{{ form.Full_name(class="form-control", value=patient_update.Full_name) }}
+		<br/>
+
+		
+
+		{{ form.Age.label(class="form-label") }}
+
+		{{ form.Age(class="form-control", value=patient_update.Age) }}
+		<br/>
+		{{ form.Phone.label(class="form-label") }}
+
+		{{ form.Phone(class="form-control", value=patient_update.Phone) }}
+		<br/>
+		{{ form.Nm_Carte.label(class="form-label") }}
+
+		{{ form.Nm_Carte(class="form-control", value=patient_update.Nm_Carte) }}
+		<br/>
+
+        {{ form.submit(class="btn btn-secondary") }}
+
+    </form>
+    <br/><br/><br/>
+
+   
+
+{% endif %}
+
+{% endblock %}

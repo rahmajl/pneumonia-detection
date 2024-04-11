@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+
+
+{% if name %}
+    <h1>update user</h1>
+	<br/><br/>
+{% for our_user in our_users %}
+  {{our_user.id}}. {{our_user.name}} - {{our_user.email}} -{{our_user.address}} - {{our_user.position}}
+{% endfor %}
+
+{% else %}
+	<h1>update user</h1>
+	<br/>
+    	
+    <div class="shadow p-3 mb-5 bg-body rounded">
+    <form action="/update/{{ name_to_update.id }}" method="POST">
+		{{ form.hidden_tag() }}
+
+		{{ form.name.label(class="form-label") }}
+
+		{{ form.name(class="form-control", value=name_to_update.name) }}
+		<br/>
+
+		
+
+		{{ form.email.label(class="form-label") }}
+
+		{{ form.email(class="form-control", value=name_to_update.email) }}
+		<br/>
+		{{ form.address.label(class="form-label") }}
+
+		{{ form.address(class="form-control", value=name_to_update.email) }}
+		<br/>
+		{{ form.position.label(class="form-label") }}
+
+		{{ form.position(class="form-control", value=name_to_update.position) }}
+		<br/>
+
+        {{ form.submit(class="btn btn-secondary") }}
+
+    </form>
+    <br/><br/><br/>
+
+   
+
+{% endif %}
+
+{% endblock %}

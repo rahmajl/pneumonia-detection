@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+
+<h1>Add a patient</h1>
+	<br/>
+<div class="shadow p-3 mb-5 bg-body rounded">
+	<form method="POST">
+		{{ form.hidden_tag() }}
+
+		{{ form.Full_name.label(class="form-label") }}
+
+		{{ form.Full_name(class="form-control") }}
+		<br/>
+		
+		
+		{{ form.Age.label(class="form-label") }}
+
+		{{ form.Age(class="form-control") }}
+		<br/>
+		
+		{{ form.Phone.label(class="form-label") }}
+
+		{{ form.Phone(class="form-control") }}
+		<br/>
+
+        {{ form.Nm_Carte.label(class="form-label") }}
+
+		{{ form.Nm_Carte(class="form-control") }}
+		<br/>
+		
+		{{ form.submit(class="btn btn-secondary") }}
+
+
+	
+
+</div>
+{% else %}
+<h2>Must Be Logged In...</h2>
+<p>Sorry, You must be logged in to access this page!</p>
+
+<a href="{{ url_for('login') }}">Login Here</a>
+
+{% endif %}
+
+
+
+{% endblock %}

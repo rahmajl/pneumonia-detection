@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  {{ message }}
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	
+{% endfor %}
+<div class="container">
+	<div class="row">
+		<div class="col md-12">
+			<div class="jumbotron p-3">
+				<h1>Manage Patient <a href = '{{ url_for('add_patient') }}' style="    float: right;    background: #8fd7e4;" class="btn btn-info float-right">Add new patient</a>
+					</h1>
+				<br><br>
+				<table class="table table-hover table-striped" style="    box-shadow: inset 0 1px 1px rgb(204 52 103 / 8%), 0 0 8px rgb(28 109 169 / 60%);">
+				<thead>
+					<tr>
+						
+						<th>Full name</th>
+						<th>Age</th>
+						<th>Phone</th>
+						<th>Number of medical card</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in our_patient %}
+					<tr>
+						
+						<td>{{row.Full_name}} </td>
+						<td>{{row.Age}} </td>
+						<td>{{row.Phone}} </td>
+						<td>{{row.Nm_Carte}} </td>
+						<td><a href = "{{ url_for('update_patient',idPatient=row.idPatient)}}" class="btn btn-secondary float-right">Update</a> </td>
+						<td><a href = "{{ url_for('upload_file', id=row.idPatient)}}" class="btn btn-secondary float-right">Add CT scan image </a> </td>
+						<td><a href = "{{ url_for('delete_patient',idPatient=row.idPatient)}}" class="btn btn-secondary float-right">Delete</a> </td>
+					</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
